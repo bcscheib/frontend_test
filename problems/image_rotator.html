@@ -7,18 +7,15 @@
 		#rotator {
 			width: 450px;
 			height: 300px;
-			text-align: center;
 			position: relative;
 			overflow: hidden;
 			margin-top: 30px;
 		}
-		#rotator li{
+		#rotator li {
 			position: absolute;
 			width: 450px;
 			height: 300px;
 			list-style: none;
-		}
-		#rotator li {
 			opacity: 0;
   			-webkit-transition: opacity 1s ease-in-out;
   			-moz-transition: opacity 1s ease-in-out;
@@ -58,19 +55,19 @@
 		}
 		@keyframes myship
         {
-        from {bottom: 15px;color:black;} 
-        to{bottom:30px;color:white;} 
+        	from {bottom: 15px;color:black;} 
+        	to{bottom:30px;color:white;} 
         }
         @-moz-keyframes myship
         {
-        from {bottom: 15px;color:black;} 
-        to{bottom:30px;color:white;} 
+        	from {bottom: 15px;color:black;} 
+        	to{bottom:30px;color:white;} 
         }
         @-webkit-keyframes myship
         {
-      from {bottom: 15px;color:black;} 
-        to{bottom:30px;color:white;} 
-            	}
+      		from {bottom: 15px;color:black;} 
+        	to{bottom:30px;color:white;} 
+        }
 	</style>
 </head>
 <body>
@@ -125,7 +122,7 @@
 <script src="../js/image_rotator.js"></script>
 <script>
 window.onload = function(){
-	imageRotator.init('#rotator');
+	Rotator.init('#rotator');
 };
 </script>
 </body>
