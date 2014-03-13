@@ -7,10 +7,70 @@
 		#rotator {
 			width: 450px;
 			height: 300px;
-			border: 1px solid black;
-			background: #aaa;
 			text-align: center;
+			position: relative;
+			overflow: hidden;
+			margin-top: 30px;
 		}
+		#rotator li{
+			position: absolute;
+			width: 450px;
+			height: 300px;
+			list-style: none;
+		}
+		#rotator li {
+			opacity: 0;
+  			-webkit-transition: opacity 1s ease-in-out;
+  			-moz-transition: opacity 1s ease-in-out;
+  			-o-transition: opacity 1s ease-in-out;
+  			transition: opacity 1s ease-in-out;
+		}
+		#rotator li.active {
+  			opacity: 1;
+		}
+		#rotator .caption{
+			position: absolute;
+			bottom: 30px;
+			color: black;
+			background : rgba(0, 0, 0, 0.2);
+			width: 100%;
+			color: white;
+			font-size: 11px;
+		}
+		#rotator .caption p{
+			margin: 5px 0 10px 0;
+			padding: 0px 15px;
+			text-align: left;
+		}
+		#rotator .caption h4{
+			font-size: 16px;
+			color: #DC291E;
+			font-weight: bold;
+			padding: 0px 15px;
+			margin-bottom: 5px;
+			margin-top: 10px;
+			text-align: left;
+		}
+		#rotator li.active .caption{
+			animation:myship 1.2s;
+            -moz-animation:myship 1.2s; /* Firefox */
+            -webkit-animation:myship 1.2s; /* Safari and Chrome */
+		}
+		@keyframes myship
+        {
+        from {bottom: 15px;color:black;} 
+        to{bottom:30px;color:white;} 
+        }
+        @-moz-keyframes myship
+        {
+        from {bottom: 15px;color:black;} 
+        to{bottom:30px;color:white;} 
+        }
+        @-webkit-keyframes myship
+        {
+      from {bottom: 15px;color:black;} 
+        to{bottom:30px;color:white;} 
+            	}
 	</style>
 </head>
 <body>
@@ -22,38 +82,51 @@
 
 <div id="content">
 	<h1><span class="red">Image</span> Rotator</h1>
+    <hr>
 
-	<p>
-		Using the below images, make a rotator in the box below that shows only one of the Katarina skins every 3 seconds.  The rotator should also display the correct image title and description with each image change.
-	</p>
-	<p>
-		It would be really awesome if the slides animated between one another!
-	</p>
-
-	<hr />
-
-	<h4>Katarina</h4>
-	<p>Fruitcake bonbon donut jelly-o brownie biscuit marzipan pie.</p>
-	<img src="../img/kat_1.jpg" /><br/>
-
-	<h4>Red Card Katarina</h4>
-	<p>Cheesecake marzipan cupcake biscuit candy canes pudding.</p>
-	<img src="../img/kat_2.jpg" /><br/>
-
-	<h4>Kitty Cat Katarina</h4>
-	<p>Applicake topping halvah lemon drops wypas cotton candy.</p>
-	<img src="../img/kat_3.jpg" /><br/>
-
-	<h4>High Command Katarina</h4>
-	<p>Oat cake macaroon souffle cupcake chupa chups chocolate bar bear claw dragee lemon drops.</p>
-	<img src="../img/kat_4.jpg" /><br/>
-
-	<hr/>
-
-	<div id="rotator">
-		Rotator Here
-	</div>
+	<ul id="rotator"> <!-- rotate every three seconds -->
+		<li>
+			<div class="caption">
+			<h4>Katarina</h4>
+			<p>Fruitcake bonbon donut jelly-o brownie biscuit marzipan pie.</p>
+		</div>
+			<img src="../img/kat_1.jpg" />
+		</li>
+		<li>
+			<div class="caption">
+			<h4>Red Card Katarina</h4>
+			<p>Cheesecake marzipan cupcake biscuit candy canes pudding.</p>
+		</div>
+			<img src="../img/kat_2.jpg" />
+		</li>
+		<li>
+			<div class="caption">
+			<h4>Kitty Cat Katarina</h4>
+			<p>Applicake topping halvah lemon drops wypas cotton candy.</p>
+		</div>
+			<img src="../img/kat_3.jpg" />
+		</li>
+		<li>
+			<div class="caption">
+			<h4>High Command Katarina</h4>
+			<p>Oat cake macaroon souffle cupcake chupa chups chocolate bar bear claw dragee lemon drops.</p>
+		</div>
+			<img src="../img/kat_4.jpg" />
+		</li>
+	</ul>
 </div>
-
+<hr>
+<ul>
+	<li><a href="image_rotator.html">Image Rotator</a></li>
+	<li><a href="text_search.html">Text Search</a></li>
+	<li><a href="tabbed_content.html">Tabbed content</a></li>
+</ul>
+<script src="../js/util.js"></script>
+<script src="../js/image_rotator.js"></script>
+<script>
+window.onload = function(){
+	imageRotator.init('#rotator');
+};
+</script>
 </body>
 </html>

@@ -4,18 +4,86 @@
 	<title>Frontend Coding Test</title>
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 	<style type="text/css">
-		.picture {
-			background-color: #F9F9F9;
-			border: 1px solid #CCCCCC; padding: 3px;
-			text-align: center;
-			margin: 0 0 18px 0;
-			width: 647px;
-			color: #000;
+	    .tab-container{
+	    	width: 90%;
+	    	margin: 0 auto;
+	    	padding-top: 20px;
+	    }
+		.tab-content{
+			padding: 20px;
+			background: white;
+			border: 1px solid silver;
+			opacity: 0;
+			position: absolute;
+			top: -10000px;
+			-webkit-transition: opacity 1s ease-in-out;
+  			-moz-transition: opacity 1s ease-in-out;
+  			-o-transition: opacity 1s ease-in-out;
+  			transition: opacity 1s ease-in-out;
 		}
-		
-		.picture img {
-			border: 1px solid #CCCCCC;
-			vertical-align:middle; margin-bottom: 3px;
+		.tab-content.active{
+			opacity: 1;
+			position: relative;
+			top: 0px;
+		}
+		.tab-content h3{
+			font-size: 22px;
+			margin-top: 3px;
+			margin-bottom: 0px;
+			color: #DC291E;
+			padding-bottom: 5px;
+			border-bottom: 1px solid #DC291E;
+			letter-spacing: .7px;
+		}
+		.tab-content p{
+			color:gray;
+			line-height: 21px;
+		}
+		.tab-content-container{
+			border-top: 2px solid #DC291E;
+			background:white;
+		}
+
+		.tab-container-nav{
+			margin: 0px 0px;
+			padding: 0px;
+		}
+		.tab-container-nav li{
+			display: inline-block;
+			list-style: none;
+			padding: 0px;
+			margin-right: 0px;
+			margin: 0px;
+		}
+		.tab-container-nav li a{
+			padding: 10px 15px;
+			display: inline-block;
+			border-top: 1px solid black;
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+			background: gray;
+			color: black;
+			border-top: 5px solid silver;
+			text-transform: uppercase;
+			font-size: 12px;
+			-webkit-transition: background .5s ease-in-out;
+  			-moz-transition: background .5s ease-in-out;
+  			-o-transition: background .5s ease-in-out;
+  			transition: background .5s ease-in-out;
+  			font-weight:bold;
+  			letter-spacing: 1px;
+		}
+		.tab-container-nav li a.active, .tab-container-nav li a:hover{
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+			background: white;
+			color: black;
+		}
+		.tab-container-nav li a.active{
+			border-top: 5px solid #DC291E !important;
+		}
+		.tab-container-nav li a:hover{
+			border-top: 5px solid green;
 		}
 	</style>
 </head>
@@ -26,37 +94,53 @@
 		</div>
 	</div>
 	<div id="content">
+		
 		<h1><span class="red">Tabbed</span> content</h1>
+		<hr>
 
-		<p>
-			Using HTML, CSS, and JavaScript, create a functional tabbed content container in the div below.  Each tab should contain different content, and content should change when clicking on a different tab.
-		</p>
-
-		<div class="picture">
-			<img src="../img/tabbed_content.png" />
-			<p>Example of a tabbed content container.</p>
-		</div>
-
-		<hr/>
-
+	
 		<div id="container">
-			Turn this content into a tabbed container.
-
-			<h3>Tab 1</h3>
-			<p>
-				Gingerbread muffin gummies gingerbread macaroon. Lollipop candy applicake toffee faworki. Bear claw topping jelly toffee toffee powder tiramisu candy chupa chups. Chupa chups dragee icing applicake chupa chups dessert. Croissant jelly faworki marzipan tootsie roll marshmallow. Marshmallow toffee sweet roll fruitcake.
-			</p>
-
-			<h3>Tab 2</h3>
-			<p>
-				Chocolate faworki croissant brownie halvah macaroon gummi bears wypas. Chupa chups icing gummies pudding dessert carrot cake. Cupcake jelly beans sweet roll icing ice cream apple pie tootsie roll gummi bears marzipan. Brownie gummies chupa chups pie. Cupcake jujubes topping. 
-			</p>
-
-			<h3>Tab 3</h3>
-			<p>
-				Cheesecake jelly beans ice cream lollipop sweet pastry. Chupa chups dessert cheesecake sesame snaps. Cookie ice cream candy canes pastry cake muffin. Icing chocolate sweet gummi bears powder oat cake oat cake lemon drops.
-			</p>
+			<div class="tab-container">
+				<ul class="tab-container-nav">
+					<li><a data-tab="0" href="javascript:;">Tab 1</a></li>
+					<li><a data-tab="1" href="javascript:;">Tab 2</a></li>
+					<li><a data-tab="2" href="javascript:;">Tab 3</a></li>
+				</ul>
+				<div class="tab-content-container">
+				<div class="tab-content" data-tab="0">
+				<h3>Tab 1</h3>
+				<p>
+					Gingerbread muffin gummies gingerbread macaroon. Lollipop candy applicake toffee faworki. Bear 	claw topping jelly toffee toffee powder tiramisu candy chupa chups. Chupa chups dragee icing 	applicake chupa chups dessert. Croissant jelly faworki marzipan tootsie roll marshmallow. 	Marshmallow toffee sweet roll fruitcake.
+				</p>
+				</div>
+				<div class="tab-content" data-tab="1">
+				<h3>Tab 2</h3>
+				<p>
+					Chocolate faworki croissant brownie halvah macaroon gummi bears wypas. Chupa chups icing gummies 	pudding dessert carrot cake. Cupcake jelly beans sweet roll icing ice cream apple pie tootsie 	roll gummi bears marzipan. Brownie gummies chupa chups pie. Cupcake jujubes topping. 
+				</p>
+				</div>
+				<div class="tab-content" data-tab="2">
+				<h3>Tab 3</h3>
+				<p>
+					Cheesecake jelly beans ice cream lollipop sweet pastry. Chupa chups dessert cheesecake sesame 	snaps. Cookie ice cream candy canes pastry cake muffin. Icing chocolate sweet gummi bears powder 	oat cake oat cake lemon drops.
+				</p>
+				</div>
+				</div>
+			</div>
 		</div>
 	</div>
+	<hr>
+	<ul>
+		<li><a href="image_rotator.html">Image Rotator</a></li>
+		<li><a href="text_search.html">Text Search</a></li>
+		<li><a href="tabbed_content.html">Tabbed content</a></li>
+	</ul>
+	<script src="../js/util.js"></script>
+	<script src="../js/tabs.js"></script>
+	<script>
+	window.onload = function(){
+		Tabifier.init('.tab-container');
+	};
+	</script>
 </body>
 </html>

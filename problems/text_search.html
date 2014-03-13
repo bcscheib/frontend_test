@@ -3,6 +3,68 @@
 <head>
 	<title>Frontend Coding Test | Text Search</title>
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
+	<style>
+	.hidden{
+		display: none !important;
+	}
+	#search_text{
+		padding: 15px 25px;
+		background: white;
+		color: black;
+	}
+	#search_text p:first-child{
+		margin-top: 5px;
+	}
+	#search_input{
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		border-top-left-radius: 5px ;
+		border-bottom-left-radius: 5px ;
+		padding: 5px;
+		font-size: 14px;
+		outline: none;
+		border-color: white;
+	}
+	#search_input.found{
+		border-top-right-radius: 0px ;
+		border-bottom-right-radius: 0px ;
+	}
+	#results{
+		background: #a90329; /* Old browsers */
+		background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+		background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+		display: inline-block;
+		padding: 9px 15px;
+		position: relative;
+		left: -6px;
+		top: -1px;
+		border-top-right-radius: 5px ;
+		border-bottom-right-radius: 5px ;
+		font-size:13px;
+		color: white;
+	}
+	#results i{
+		color: silver;
+		font-weight: bold;
+	}
+	#search_form{
+		position: relative;
+		display: inline-block;
+	}
+	#search_form label{
+		font-size: 16px;
+		display: inline-block;
+		margin-right: 5px;
+	}
+	.highlight{
+		background: yellow;
+	}
+	</style>
 </head>
 <body>
 <div id="headwrap">
@@ -12,32 +74,16 @@
 </div>
 <div id="content">
 	<h1><span class="red">Text</span> Search</h1>
-	<p>
-		There are two main components below, a search form and a text article about turtles. The form should be setup such that a word or phase can be entered in the search form, and the number of occurences of that phrase is shown below. 
-	</p>
-	<p>
-		For example, in the below text there are two occurences of the word "Testudines" so if you put that word in the search form, and submit, the results should say:
-
-		<i>Found 2 occurances of the word "Testudines" in the below text.</i>
-	</p>
-	<p>
-		Keep in mind that words can be contained within multiple levels of HTML elements, and phrases may cross those HTML element boundaries.
-	</p>
-
-	<hr/>
-
-	<h2>Search</h2>
-	<form>
-		<input type="text" id="search_input" value="llama" />
-		<input type="submit" value="Search" />
+	<hr>
+	<form id="search_form">
+		<label for="search_input">Search Doc</label>
+		<input name="search_input" type="search" id="search_input" placeholder="Type to search.." />
+		<div id="results" class="hidden">
+			Found <i>0</i> occurances of "<span></span>".
+		</div>
 	</form>
 
-	<h3>Results</h3>
-	Found 0 occurances of the word "llama" in the below text.
-
-	<hr/>
-
-	<h2>Search Text</h2>
+	<h2>Turtles</h2>
 	<div id="search_text">
 		<p>
 			<b>Turtles</b> are <a href="/wiki/Reptile" title="Reptile">reptiles</a> of the <a href="/wiki/Order_(biology)" title="Order (biology)">order</a> <b>Chelonii</b><sup id="cite_ref-Dubois_2-0" class="reference"><a href="#cite_note-Dubois-2"><span>[</span>2<span>]</span></a></sup> or <b>Testudines</b> characterised by a special <a href="/wiki/Bone" title="Bone">bony</a> or <a href="/wiki/Cartilage" title="Cartilage">cartilaginous</a> <a href="/wiki/Animal_shell" title="Animal shell" class="mw-redirect">shell</a> developed from their <a href="/wiki/Rib" title="Rib">ribs</a> and acting as a <a href="/wiki/Shield" title="Shield">shield</a>.<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span>[</span>3<span>]</span></a></sup> "Turtle" may either refer to the order as a whole, or to particular turtles which make up a <a href="/wiki/Form_taxon" title="Form taxon" class="mw-redirect">form taxon</a> that is not <a href="/wiki/Monophyletic" title="Monophyletic" class="mw-redirect">monophyletic</a>.
@@ -53,6 +99,18 @@
 		</p>
 	</div>
 </div>
-
+<hr>
+<ul>
+	<li><a href="image_rotator.html">Image Rotator</a></li>
+	<li><a href="text_search.html">Text Search</a></li>
+	<li><a href="tabbed_content.html">Tabbed content</a></li>
+</ul>
+<script src="../js/util.js"></script>
+<script src="../js/searcher.js"></script>
+<script>
+window.onload = function(){
+	Searcher.init();
+};
+</script>
 </body>
 </html>
