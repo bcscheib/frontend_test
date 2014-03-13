@@ -1,4 +1,5 @@
 var Searcher = {
+	searching: false,
 	init: function(options){
 		if(options === undefined)
 			options = {};
@@ -12,10 +13,11 @@ var Searcher = {
 		this.doc = $(this.docSelector);
 
 		// preserve doc text
-		this.docText, this.docHTML = this.doc.text(), this.doc.html(); 
+		this.docText = this.doc.text();
+		this.docHTML = this.doc.html(); 
 
-		this.resultNumContainer = $(options.results_selector + ' i');
-		this.resultQContainer = $(options.results_selector + ' span');
+		this.resultNumContainer = $(this.resultsSelector + ' i');
+		this.resultQContainer = $(this.resultsSelector + ' span');
 		this.initInput();
 	},
 
@@ -25,14 +27,18 @@ var Searcher = {
 		});
 		
 		Searcher.input.on('keyup', function(){ // detect typing changes
-			var q = Searcher.input.val();
-			if(!q.isBlank()){
-				Searcher.input.addClass('found');
-				Searcher.resultsDiv.removeClass('hidden');
-				Searcher.searchDoc(q);
-				Searcher.highlightWords(q);
-			}else{
-				Searcher.checkClearedSearch(q);
+			if(Searcher.searching == false){
+				Searcher.searching = true;
+				setTimeout(function(){
+					var q = Searcher.input.val();
+					if(!q.isBlank()){
+						Searcher.searchDoc(q);
+						Searcher.highlightWords(q);
+					}else{
+						Searcher.checkClearedSearch(q);
+					}
+					Searcher.searching = false;
+				}, 600)
 			}
 		});
 	},
@@ -50,7 +56,9 @@ var Searcher = {
 		ps.each(function(i, p){
 			p = $(p);
 			var pattern = new RegExp(q, 'gi');
-			p.html(p.text().replace(pattern, '<span class="highlight">' + q + '</span>'));
+			p.html(p.text().replace(pattern, function(match){
+				return '<span class="highlight">' + match + '</span>';
+			}));
 		});
 	},
 
@@ -60,5 +68,7 @@ var Searcher = {
 		count = count || [];
 		this.resultNumContainer.text(count.length);
 		this.resultQContainer.text(q);
+		Searcher.input.addClass('found');
+		Searcher.resultsDiv.removeClass('hidden');
 	}
 }

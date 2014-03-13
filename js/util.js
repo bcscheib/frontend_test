@@ -36,7 +36,6 @@ function clone(obj) {
 			var el = this.elements[0];
 			if(el !== undefined){
 				if(text !== undefined){
-					console.log("was string to set");
 					el.innerText = text;
 				}else{
 					returnObj = el.textContent;
@@ -87,20 +86,15 @@ function clone(obj) {
 			}
 		}
 	}
-	var BenQuery = {
-		find: function(selector){
-			var elements;
-			if(typeof(selector) == 'object'){
-				elements = selector.length != 1 ? [selector] : selector;
-			}else{
-				elements = document.querySelectorAll(selector);
-			} 
-			return BenQueryObject.init(elements);//elements.length == 1 ? elements[0] : elements;
-		}
-	}
 
 	window.$ = function(selector){
-		return BenQuery.find(selector)
+		var elements;
+		if(typeof(selector) == 'object'){ // allow calls like $(div)
+			elements = selector.length != 1 ? [selector] : selector;
+		}else{
+			elements = document.querySelectorAll(selector);
+		} 
+		return BenQueryObject.init(elements);
 	};
 })();
 
